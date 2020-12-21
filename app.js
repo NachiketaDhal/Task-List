@@ -72,9 +72,9 @@ function addTask(e) {
   li.className = "collection-item";
 
   // Create text node to append to li
-  li.appendChild(document.createTextNode(taskInput.value));
+    li.appendChild(document.createTextNode(taskInput.value));
   // li.innerHTML = taskInput.value;
-
+  
   // Create new link element
   const link = document.createElement("a");
 
@@ -85,11 +85,15 @@ function addTask(e) {
   link.innerHTML = '<i class="fa fa-remove"></i>';
 
   // Append the link to li
-  li.appendChild(link);
-
+  if(taskInput.value !== "") {
+    li.appendChild(link);
+  }
+  
   // Append li to ul
-  taskList.appendChild(li);
-
+  if(taskInput.value !== "") {
+    taskList.appendChild(li);
+  }
+  
   // Store in local storage
   storeTaskInLocalStorage(taskInput.value);
 
