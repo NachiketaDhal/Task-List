@@ -52,9 +52,13 @@ function getTasks() {
     // Add icon html
     link.innerHTML = '<i class="fa fa-remove"></i>';
     // Append the link to li
-    li.appendChild(link);
+    if (task !== "") {
+      li.appendChild(link);
+    }
     // Append li to ul
-    taskList.appendChild(li);
+    if (task !== "") {
+      taskList.appendChild(li);
+    }
   });
 }
 
@@ -72,9 +76,9 @@ function addTask(e) {
   li.className = "collection-item";
 
   // Create text node to append to li
-    li.appendChild(document.createTextNode(taskInput.value));
+  li.appendChild(document.createTextNode(taskInput.value));
   // li.innerHTML = taskInput.value;
-  
+
   // Create new link element
   const link = document.createElement("a");
 
@@ -85,15 +89,15 @@ function addTask(e) {
   link.innerHTML = '<i class="fa fa-remove"></i>';
 
   // Append the link to li
-  if(taskInput.value !== "") {
+  if (taskInput.value !== "") {
     li.appendChild(link);
   }
-  
+
   // Append li to ul
-  if(taskInput.value !== "") {
+  if (taskInput.value !== "") {
     taskList.appendChild(li);
   }
-  
+
   // Store in local storage
   storeTaskInLocalStorage(taskInput.value);
 
@@ -134,19 +138,19 @@ function removeTask(e) {
 /////////////////////////////////////////////////////////////////////////
 // Remove task from Local Storage
 function removeTaskFromLocalStorage(taskItem) {
-    if (localStorage.getItem("tasks") === null) {
-        tasks = [];
-      } else {
-        tasks = JSON.parse(localStorage.getItem("tasks")); // We need to convert string to JSON format
-      }
+  if (localStorage.getItem("tasks") === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem("tasks")); // We need to convert string to JSON format
+  }
 
-      tasks.forEach((task, index) => {
-          if(taskItem.textContent === task) {
-            tasks.splice(index, 1);
-          }
-      });
+  tasks.forEach((task, index) => {
+    if (taskItem.textContent === task) {
+      tasks.splice(index, 1);
+    }
+  });
 
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -170,7 +174,7 @@ function clearTask() {
 /////////////////////////////////////////////////////////////////////////
 // Clear all Tasks from Local Storage
 function clearTasksFromLocalStorage() {
-    localStorage.clear();
+  localStorage.clear();
 }
 
 /////////////////////////////////////////////////////////////////////////
