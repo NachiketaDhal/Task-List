@@ -1,5 +1,5 @@
 // Define UI variables
-const form = document.querySelector("#task-from");
+const form = document.querySelector("#task-form");
 const taskList = document.querySelector(".collection");
 const clearBtn = document.querySelector(".clear-task");
 const filter = document.querySelector("#filter");
